@@ -149,7 +149,7 @@ cp -a %{SOURCE2} unison-manual.html
 %else
 # we compile 2 versions: gtk3 ui and text ui
 make gui NATIVE=true THREADS=true
-mv src/unison unison-gtk
+mv src/unison-gui unison-gtk
 %endif
 
 make tui NATIVE=true THREADS=true
