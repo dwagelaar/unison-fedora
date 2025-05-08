@@ -155,6 +155,7 @@ mv src/unison unison-gtk
 make tui NATIVE=true THREADS=true
 mv src/unison unison-text
 
+make fsmonitor NATIVE=true THREADS=true
 mv src/unison-fsmonitor unison-fsmonitor
 
 %install
