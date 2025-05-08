@@ -31,7 +31,7 @@ Group:     Applications/File
 License:   GPLv3+
 URL:       https://www.cis.upenn.edu/~bcpierce/unison
 Source0:   https://github.com/bcpierce00/unison/archive/refs/tags/v%{ver_maj}.%{ver_min}.%{ver_patch}.tar.gz
-Source2:   https://www.cis.upenn.edu/~bcpierce/unison/download/releases/beta/unison-manual.html
+Source2:   https://raw.githubusercontent.com/bcpierce00/unison/refs/heads/documentation/unison-manual.html
 
 
 # can't make this noarch (rpmbuild fails about unpackaged debug files)
