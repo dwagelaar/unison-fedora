@@ -23,9 +23,7 @@
 
 Name:      unison%{ver_compat_name}
 Version:   %{ver_compat}%{ver_noncompat}
-#Release:   2%{?dist}
-#Release:   %{ver_patch}.git%{shortcommit}%{?dist}
-Release: 1%{?dist}
+Release:   1%{?dist}
 
 Summary:   Multi-master File synchronization tool
 
@@ -120,7 +118,7 @@ This package provides the fsmonitor functionality of unison.
 
 
 %prep
-%setup -q -n unison-%{commit}
+%setup -q -n unison-%{ver_compat}
 
 #%patch0 -p1
 
