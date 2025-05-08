@@ -23,7 +23,7 @@
 
 Name:      unison%{ver_compat_name}
 Version:   %{ver_compat}%{ver_noncompat}
-Release:   1%{?dist}
+Release:   2%{?dist}
 
 Summary:   Multi-master File synchronization tool
 
@@ -31,7 +31,6 @@ Group:     Applications/File
 License:   GPLv3+
 URL:       https://www.cis.upenn.edu/~bcpierce/unison
 Source0:   https://github.com/bcpierce00/unison/archive/refs/tags/v%{ver_maj}.%{ver_min}.%{ver_patch}.tar.gz
-Source2:   https://raw.githubusercontent.com/bcpierce00/unison/refs/heads/documentation/unison-manual.html
 
 
 # can't make this noarch (rpmbuild fails about unpackaged debug files)
@@ -66,6 +65,7 @@ BuildRequires: ocaml-lablgtk-devel
 BuildRequires: ocaml-lablgtk3-devel
 BuildRequires: gtk3-devel
 BuildRequires: desktop-file-utils
+BuildRequires: hevea
 
 Requires: %name = %{version}-%{release}
 
@@ -135,9 +135,6 @@ StartupNotify=true
 Categories=Utility;
 EOF
 
-#additional documentation
-cp -a %{SOURCE2} unison-manual.html
-
 # Undefine auto build flags to fix linking issue on F36.
 %undefine _auto_set_build_flags
 
@@ -157,6 +154,11 @@ mv src/unison unison-text
 
 make fsmonitor NATIVE=true THREADS=true
 mv src/unison-fsmonitor unison-fsmonitor
+
+cd doc
+make unison-manual.html
+cd ..
+mv doc/unison-manual.html unison-manual.html
 
 %install
 mkdir -p %{buildroot}%{_bindir}
