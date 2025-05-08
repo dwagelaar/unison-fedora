@@ -1,10 +1,7 @@
-%global commit 574a2716a9cd5096651d80f161250bf26df9a38f
-%global shortcommit %(c=%{commit}; echo ${c:0:7})
-
 # These is the exact upstream version we are packaging
 %global ver_maj 2
 %global ver_min 53
-%global ver_patch 3
+%global ver_patch 7
 
 # All Unison versions sharing ver_compat are compatible
 # Examples are 2.13.15 and 2.13.16 -> ver_compat == 2.13
@@ -28,14 +25,14 @@ Name:      unison%{ver_compat_name}
 Version:   %{ver_compat}%{ver_noncompat}
 #Release:   2%{?dist}
 #Release:   %{ver_patch}.git%{shortcommit}%{?dist}
-Release: 1.git%{shortcommit}%{?dist}
+Release: 1%{?dist}
 
 Summary:   Multi-master File synchronization tool
 
 Group:     Applications/File
 License:   GPLv3+
 URL:       https://www.cis.upenn.edu/~bcpierce/unison
-Source0:   https://github.com/bcpierce00/unison/archive/%{commit}/%{name}-%{shortcommit}.tar.gz
+Source0:   https://github.com/bcpierce00/unison/archive/refs/tags/v%{ver_maj}.%{ver_min}.%{ver_patch}.tar.gz
 Source2:   https://www.cis.upenn.edu/~bcpierce/unison/download/releases/beta/unison-manual.html
 
 
@@ -257,6 +254,9 @@ fi
 %{_bindir}/unison-fsmonitor-%{ver_compat}
 
 %changelog
+* Thu May 8 2025 Dennis Wagelaar <dwagelaar@gmail.com> - 2.53.7-1
+- Updated to Version 2.53.7
+
 * Sat May 13 2023 Chris Roadfeldt <chris@roadfeldt.com> - 2.53.3-1.git574a271
 - Updated to Version 2.52, git commit 574a2716a9cd5096651d80f161250bf26df9a38f
 - Update to POSIX ACL sync
