@@ -118,7 +118,7 @@ This package provides the fsmonitor functionality of unison.
 
 
 %prep
-%setup -q -n unison-%{ver_compat}
+%setup -q -n unison-%{ver_compat}%{ver_noncompat}
 
 #%patch0 -p1
 
